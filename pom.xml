@@ -56,10 +56,6 @@
 			<id>local_repo</id>
 			<url>file://${basedir}/local_repo</url>
 		</repository>
-		<repository>
-			<id>archiva.internal</id>
-			<url>https://mvn.cloudpractice.ca/repository/internal</url>
-		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -1307,13 +1303,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.12</version>
-		</dependency>
-		<!-- AQS -->
-		<dependency>
-			<groupId>ca.cloudpractice</groupId>
-			<artifactId>aqs-java-client</artifactId>
-			<version>0.3.6</version>
+			<version>1.18.30</version>
 		</dependency>
 	</dependencies>
 
@@ -1751,9 +1741,6 @@
                                 org.oscarehr.ws.rest.myhealthaccess.DemographicWebService
 								org.oscarehr.ws.rest.myhealthaccess.AppointmentWebService
 								org.oscarehr.ws.rest.myhealthaccess.IntegrationWebService
-								org.oscarehr.ws.rest.integrations.aqs.QueuedAppointmentWebService
-								org.oscarehr.ws.rest.integrations.aqs.QueuedAppointmentsWebService
-								org.oscarehr.ws.rest.integrations.aqs.QueueWebService
                             </value>
 						</systemProperty>
 						<systemProperty>
@@ -1918,7 +1905,7 @@
 					<!-- TODO switch to JUNO directory -->
 					<!-- <workingDirectory>${basedir}/src/main/webapp/juno</workingDirectory> -->
 					<installDirectory>target</installDirectory>
-					<nodeVersion>v6.10.3</nodeVersion>
+					<nodeVersion>v16.20.2</nodeVersion>
 				</configuration>
 
 				<executions>
@@ -2026,6 +2013,7 @@
 		<profile>
 			<id>jdk6</id>
 			<activation>
+				<activeByDefault>false</activeByDefault>
 				<jdk>1.6</jdk>
 			</activation>
 			<dependencies>
@@ -2068,7 +2056,7 @@
 		<profile>
 			<id>jdk7</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 				<jdk>1.7</jdk>
 			</activation>
 			<dependencies>
@@ -2111,7 +2099,7 @@
 		<profile>
 			<id>jdk8</id>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 				<jdk>1.8</jdk>
 			</activation>
 			<dependencies>
